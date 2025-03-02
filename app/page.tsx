@@ -2,38 +2,45 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 const artworks = [
   {
+    id: "abstract-dreams",
     title: "Abstract Dreams",
     artist: "Jane Smith",
     image: "https://source.unsplash.com/random/800x600?abstract",
     description: "A vibrant exploration of color and form"
   },
   {
+    id: "urban-landscape",
     title: "Urban Landscape",
     artist: "John Doe",
     image: "https://source.unsplash.com/random/800x600?city",
     description: "Contemporary view of city life"
   },
   {
+    id: "natures-harmony",
     title: "Nature's Harmony",
     artist: "Maria Garcia",
     image: "https://source.unsplash.com/random/800x600?nature",
     description: "Inspired by natural elements"
   },
   {
+    id: "modern-expression",
     title: "Modern Expression",
     artist: "Alex Chen",
     image: "https://source.unsplash.com/random/800x600?modern",
     description: "A modern take on classical themes"
   },
   {
+    id: "sunset-reflections",
     title: "Sunset Reflections",
     artist: "Sarah Johnson",
     image: "https://source.unsplash.com/random/800x600?sunset",
     description: "Capturing the magic of dusk"
   },
   {
+    id: "ocean-dreams",
     title: "Ocean Dreams",
     artist: "Michael Brown",
     image: "https://source.unsplash.com/random/800x600?ocean",
@@ -41,6 +48,7 @@ const artworks = [
   }
 ]
 export default function Home() {
+  const router = useRouter()
   return (
     <main className="min-h-screen bg-background">
       {/* Hero Section */}
@@ -70,7 +78,12 @@ export default function Home() {
                 <h3 className="text-xl font-semibold">{artwork.title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">by {artwork.artist}</p>
                 <p className="mt-2">{artwork.description}</p>
-                <Button className="w-full mt-4">View Details</Button>
+                <Button 
+                  className="w-full mt-4"
+                  onClick={() => router.push(`/artwork/${artwork.id}`)}
+                >
+                  View Details
+                </Button>
               </CardContent>
             </Card>
           ))}
